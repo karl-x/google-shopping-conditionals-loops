@@ -26,9 +26,10 @@ document.addEventListener('DOMContentLoaded', function () {
     //Buttons:================================
     buttonAdd.addEventListener('click', addToCart)
     buttonClear.addEventListener('click', clearCart)
-     
+    buttonSearch.addEventListener('click', searchByAuthor)
+    buttonSearch.addEventListener('click', searchByBrand)
     buttonDisplay.addEventListener('click', displayAll)
-    buttonSearch.addEventListener('click', searchByBoth)
+    // buttonSearch.addEventListener('click', searchByBoth)
 
 
 
@@ -114,10 +115,6 @@ document.addEventListener('DOMContentLoaded', function () {
         var author = item.product.author.name.toUpperCase()
 
         var brand = item.product.brand.toUpperCase()
-        console.log(brand)
-        console.log(author)
-        console.log(searchAuthor.value.toUpperCase())
-        console.log(searchBrand.value.toUpperCase())
 
         if (author === searchAuthor.value.toUpperCase() && brand === searchBrand.value.toUpperCase()) {
           shoppingList.appendChild(listItem).appendChild(radio)
