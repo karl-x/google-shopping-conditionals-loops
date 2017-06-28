@@ -26,10 +26,9 @@ document.addEventListener('DOMContentLoaded', function () {
     //Buttons:================================
     buttonAdd.addEventListener('click', addToCart)
     buttonClear.addEventListener('click', clearCart)
-    buttonSearch.addEventListener('click', searchByAuthor)
-    buttonSearch.addEventListener('click', searchByBrand)
+     
     buttonDisplay.addEventListener('click', displayAll)
-    // buttonSearch.addEventListener('click', searchByBoth)
+    buttonSearch.addEventListener('click', searchByBoth)
 
 
 
@@ -62,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
            alert('cart list is empty')
          return // need to return, so the function stops running
        }
-      var shoppingList = document.querySelector('#shopping-list')
+      var shoppigList = document.querySelector('#shopping-list')
        var lastItem = cartList[cartList.length - 1]
        var checked = document.querySelectorAll('radtioBtn').checked === true
       shoppingList.appendChild(lastItem)
@@ -113,7 +112,12 @@ document.addEventListener('DOMContentLoaded', function () {
         radio.id = 'radioBtn'
 
         var author = item.product.author.name.toUpperCase()
+
         var brand = item.product.brand.toUpperCase()
+        console.log(brand)
+        console.log(author)
+        console.log(searchAuthor.value.toUpperCase())
+        console.log(searchBrand.value.toUpperCase())
 
         if (author === searchAuthor.value.toUpperCase() && brand === searchBrand.value.toUpperCase()) {
           shoppingList.appendChild(listItem).appendChild(radio)
