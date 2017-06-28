@@ -10,6 +10,7 @@
 
 .left-content {
   width: 65%;
+  white-space: nowrap
 }
 
 .right-content {
@@ -25,6 +26,4 @@
   width: 180px;
   align: right;
   text-align: left
-
-
 }

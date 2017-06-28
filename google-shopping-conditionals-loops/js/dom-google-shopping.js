@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var space = document.querySelector('#err')
     var shoppingList = document.querySelector('#shopping-list')
     var buttonAdd = document.querySelector('#add')
+    var buttonClear = document.querySelector('#clear')
     var buttonSearch = document.querySelector('#search')
     var buttonDisplay = document.querySelector('#display')
     var searchBrand = document.querySelector('#brand')
@@ -24,10 +25,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //Buttons:================================
     buttonAdd.addEventListener('click', addToCart)
+    buttonClear.addEventListener('click', clearCart)
     buttonSearch.addEventListener('click', searchByAuthor)
     buttonSearch.addEventListener('click', searchByBrand)
     buttonDisplay.addEventListener('click', displayAll)
-    buttonSearch.addEventListener('click', searchByBoth)
+    // buttonSearch.addEventListener('click', searchByBoth)
 
 
 
@@ -38,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
       listItem.textContent = item.product.title
       var radio = document.createElement('input')
       radio.type = 'radio'
-      radio.id = 'radioBtn'
+      radio.id ='radioBtn'
       shoppingList.appendChild(listItem).appendChild(radio)
     })
 
@@ -50,12 +52,24 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       var cartList = document.querySelector('#cart-list')
       var lastItem = shoppingList[shoppingList.length - 1]
-      var checked = (document.querySelector('#radioBtn').checked = true)
-      cartList.appendChild(checked)
+      var checked = document.querySelectorAll('radtioBtn').checked === true
+      cartList.appendChild(lastItem)
+    }
+
+    function clearCart () {
+       var cartList = document.querySelectorAll('#cart-list li')
+         if (!cartList.length) {
+           alert('cart list is empty')
+         return // need to return, so the function stops running
+       }
+      var shoppingList = document.querySelector('#shopping-list')
+       var lastItem = cartList[cartList.length - 1]
+       var checked = document.querySelectorAll('radtioBtn').checked === true
+      shoppingList.appendChild(lastItem)
     }
 
     function searchByBrand () {
-      shoppingList.innerHTML = ""
+      shoppingList.innerHTML = ''
       items.forEach(function (item) {
         var listItem = document.createElement('li')
         listItem.textContent = item.product.title
@@ -65,9 +79,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var brand = item.product.brand.toUpperCase()
 
-        if (brand === searchBrand.value.toUpperCase()) {
-          shoppingList.appendChild(listItem).appendChild(radio)
-        }
+
+          if (brand === searchBrand.value.toUpperCase()) {
+            shoppingList.appendChild(listItem).appendChild(radio)
+          }
       })
     }
 
@@ -81,9 +96,10 @@ document.addEventListener('DOMContentLoaded', function () {
         radio.id = 'radioBtn'
 
         var author = item.product.author.name.toUpperCase()
-        if (author === searchAuthor.value.toUpperCase()) {
-          shoppingList.appendChild(listItem).appendChild(radio)
-        }
+
+          if (author === searchAuthor.value.toUpperCase()) {
+            shoppingList.appendChild(listItem).appendChild(radio)
+          }
       })
     }
 
@@ -101,8 +117,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (author === searchAuthor.value.toUpperCase() && brand === searchBrand.value.toUpperCase()) {
           shoppingList.appendChild(listItem).appendChild(radio)
-        } else {
-          space.textContent = 'Your Search Returned 0 Results!'
         }
       })
     }
@@ -113,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var listItem = document.createElement('li')
         var radio = document.createElement('input')
         radio.type = 'radio'
-        radio.id = 'radioBtn'
+        radio.id ='radioBtn'
 
         listItem.textContent = item.product.title
         shoppingList.appendChild(listItem).appendChild(radio)
