@@ -21,12 +21,14 @@ document.addEventListener('DOMContentLoaded', function () {
     var searchBrand = document.querySelector('#brand')
     var searchAuthor = document.querySelector('#author')
 
+
     //Buttons:================================
     buttonAdd.addEventListener('click', addToCart)
     buttonSearch.addEventListener('click', searchByAuthor)
     buttonSearch.addEventListener('click', searchByBrand)
     buttonDisplay.addEventListener('click', displayAll)
-    // buttonSearch.addEventListener('click', searchByBoth)
+    buttonSearch.addEventListener('click', searchByBoth)
+
 
 
     // Starter code. List out items' name into the shopping list
@@ -34,9 +36,10 @@ document.addEventListener('DOMContentLoaded', function () {
     items.forEach(function (item) {
       var listItem = document.createElement('li')
       listItem.textContent = item.product.title
-      var checkBox = document.createElement('input')
-      checkBox.type = 'checkbox'
-      shoppingList.appendChild(listItem).appendChild(checkBox)
+      var radio = document.createElement('input')
+      radio.type = 'radio'
+      radio.id = 'radioBtn'
+      shoppingList.appendChild(listItem).appendChild(radio)
     })
 
     function addToCart () {
@@ -47,89 +50,77 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       var cartList = document.querySelector('#cart-list')
       var lastItem = shoppingList[shoppingList.length - 1]
-      cartList.appendChild(lastItem)
+      var checked = (document.querySelector('#radioBtn').checked = true)
+      cartList.appendChild(checked)
     }
-
-    // function addToCart () {
-    //   if (!shoppingList.length) {
-    //     alert('shopping list is empty')
-    //     return // need to return, so the function stops running
-    //   }
-    //   var cartList = document.querySelector('#cart-list')
-    //   var lastItem = shoppingList[shoppingList.length - 1]
-    //   cartList.appendChild(lastItem)
-    // }
 
     function searchByBrand () {
       shoppingList.innerHTML = ""
       items.forEach(function (item) {
         var listItem = document.createElement('li')
         listItem.textContent = item.product.title
-        var checkBox = document.createElement('input')
-        checkBox.type = 'checkbox'
+        var radio = document.createElement('input')
+        radio.type = 'radio'
+        radio.id = 'radioBtn'
 
-        var brand = item.product.brand
+        var brand = item.product.brand.toUpperCase()
 
-
-          if (brand === searchBrand.value) {
-            shoppingList.appendChild(listItem).appendChild(checkBox)
-          }
+        if (brand === searchBrand.value.toUpperCase()) {
+          shoppingList.appendChild(listItem).appendChild(radio)
+        }
       })
     }
 
     function searchByAuthor () {
-      shoppingList.innerHTML = ""
+      shoppingList.innerHTML = ''
       items.forEach(function (item) {
         var listItem = document.createElement('li')
         listItem.textContent = item.product.title
-        var checkBox = document.createElement('input')
-        checkBox.type = 'checkbox'
+        var radio = document.createElement('input')
+        radio.type = 'radio'
+        radio.id = 'radioBtn'
 
-        var author = item.product.author.name
-
-          if (author === searchAuthor.value) {
-            shoppingList.appendChild(listItem).appendChild(checkBox)
-          }
+        var author = item.product.author.name.toUpperCase()
+        if (author === searchAuthor.value.toUpperCase()) {
+          shoppingList.appendChild(listItem).appendChild(radio)
+        }
       })
     }
 
     function searchByBoth () {
-      shoppingList.innerHTML = ""
+      shoppingList.innerHTML = ''
       items.forEach(function (item) {
         var listItem = document.createElement('li')
         listItem.textContent = item.product.title
-        var checkBox = document.createElement('input')
-        checkBox.type = 'checkbox';
+        var radio = document.createElement('input')
+        radio.type = 'radio'
+        radio.id = 'radioBtn'
 
+        var author = item.product.author.name.toUpperCase()
+        var brand = item.product.brand.toUpperCase()
 
-        var author = item.product.author.name
-        var brand = item.product.brand
-        // var error = document.createElement('p')
-        // error.textContent = 'Your Search Returned 0 Results!'
-
-        if (author === searchAuthor.value && brand === searchBrand.value) {
-          shoppingList.appendChild(listItem).appendChild(checkBox)
+        if (author === searchAuthor.value.toUpperCase() && brand === searchBrand.value.toUpperCase()) {
+          shoppingList.appendChild(listItem).appendChild(radio)
+        } else {
+          space.textContent = 'Your Search Returned 0 Results!'
         }
-        // else {
-        //    space.appendChild(error)
-        // }
       })
     }
 
     function displayAll () {
-      shoppingList.innerHTML = ""
+      shoppingList.innerHTML = ''
       items.forEach(function (item) {
         var listItem = document.createElement('li')
-        var checkBox = document.createElement('input')
-        checkBox.type = 'checkbox'
+        var radio = document.createElement('input')
+        radio.type = 'radio'
+        radio.id = 'radioBtn'
 
         listItem.textContent = item.product.title
-        shoppingList.appendChild(listItem).appendChild(checkBox)
+        shoppingList.appendChild(listItem).appendChild(radio)
+        searchBrand.value = ''
+        searchAuthor.value = ''
       })
     }
-
-
-
 
     // DO NOT REMOVE ANYTHING AFTER THIS LINE
   })

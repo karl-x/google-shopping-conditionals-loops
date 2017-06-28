@@ -1,0 +1,30 @@
+.container {
+  width: 80%;
+  margin: 0 auto; // floating in the center
+}
+
+.left-content, .right-content {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.left-content {
+  width: 65%;
+}
+
+.right-content {
+  width: 30%;
+  text-align: right;
+}
+
+.right {
+  width: 95px;
+}
+
+.input {
+  width: 180px;
+  align: right;
+  text-align: left
+
+
+}

@@ -3,23 +3,34 @@
   <head>
     <meta charset="utf-8">
     <title>GOOGLE SHOPPING</title>
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <input type="text" name="brand" id="brand" placeholder="Search By Brand">
-    <input type="text" name="author" id="author" placeholder="Search By Author">
-    <button id="search">Submit</button>
-    <button id="display">List All Items</button>
-
-    <h1>Shopping List</h1>
-    <p id="err"></p>
-    <ul id="shopping-list">
-    </ul>
-    <button id="add">Add to cart</button>
-
-    <h2>My Cart</h2>
-    <ul id="cart-list">
-      <!--<li>new listzzzz</li> -->
-    </ul>
+    <div class="container">
+      <div class="left-content">
+        <div class="left-divs">
+          <h1>Shopping List</h1>
+          <p id="err"></p>
+          <ul id="shopping-list">
+          </ul>
+          <button id="add">Add to cart</button>
+        </div>
+        <div class="left-divs">
+          <h2>My Cart</h2>
+          <ul id="cart-list">
+            <!--<li>new listzzzz</li> -->
+          </ul>
+        </div>
+      </div>
+      <div class="right-content">
+        <input type="text" name="brand" id="brand" class="input" placeholder="Search By Brand">
+        <br />
+        <input type="text" name="author" id="author" class="input" placeholder="Search By Author">
+        <br />
+        <button class="right" id="search">Submit</button>
+        <button lass="right" id="display">List All Items</button>
+      </div>
+    </div>
 
     <!-- <script src="js/dom-create.js" charset="utf-8"></script> -->
     <script src="js/dom-google-shopping.js" charset="utf-8"></script>
